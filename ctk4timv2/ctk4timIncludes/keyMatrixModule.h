@@ -34,7 +34,16 @@ void keyMatrixInit();
 
 /**
  * @brief Key Matrix Read Data
+ * @return Key Pressed Value
  */
-void keyMatrixRead();
+uchar keyMatrixRead();
+
+/**
+ * @brief Read Row Value
+ * @param row Row to Read
+ * @param column Column to Read
+ * @return Key Pressed Value
+ */
+int readRow(uchar row, uchar column);
 
 #endif
