@@ -26,10 +26,10 @@
 /**
  * ASCII Table Conversion
  */
-uchar const keyMatrixData [4][4] = {{'0','1','2','3',},		// Row 0
-									{'4','5','6','7',}, 	// Row 1
-									{'8','9','A','B',}, 	// Row 2
-									{'C','D','E','F',}};	// Row 3
+uchar const keyMatrixData [16] = {'0','1','2','3',	// Row 0
+								  '4','5','6','7', 	// Row 1
+								  '8','9','A','B', 	// Row 2
+								  'C','D','E','F'};	// Row 3
 /**
  * @brief Init Key Matrix
  */
@@ -60,10 +60,10 @@ void keyMatrixInit()
  * @brief Key Matrix Read Data
  * @return Key Pressed Value
  */
-uchar keyMatrixRead()
+int keyMatrixRead()
 {
 	uchar i, j = 0;
-	int dataRead = 0;
+	int dataRead = -1;
 
 	// Scan Rows and Columns
 	for( i = 0; i < 4; i++)
@@ -169,4 +169,14 @@ int readRow(uchar row, uchar column)
 		}
 	}
 	return rowValue;
+}
+
+/**
+ * @brief Convert KeyValue in ASCII Value
+ * @param keyValue KeyPressed
+ * @return ASCII KeyPress Value
+ */
+uchar keyMatrixKeyASCII(int keyValue)
+{
+	return keyMatrixData[keyValue];
 }

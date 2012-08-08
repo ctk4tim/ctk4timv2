@@ -50,12 +50,12 @@
 /*
  * LCD Pin Definition
  */
-#define E_LCD		&P2OUT,BIT5
-#define RS_LCD		&P2OUT,BIT4
-#define D7_LCD		&P2OUT,BIT3
-#define D6_LCD		&P2OUT,BIT2
-#define D5_LCD		&P2OUT,BIT1
-#define D4_LCD		&P2OUT,BIT0
+#define E_LCD		&P2OUT,BIT0
+#define RS_LCD		&P2OUT,BIT1
+#define D7_LCD		&P2OUT,BIT5
+#define D6_LCD		&P2OUT,BIT4
+#define D5_LCD		&P2OUT,BIT3
+#define D4_LCD		&P2OUT,BIT2
 
 /*
  * Motor PAP Pines

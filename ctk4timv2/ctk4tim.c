@@ -22,28 +22,10 @@
  */
 
 #include "ctk4timIncludes/coreModule.h"
-#include "ctk4timIncludes/rgbLedModule.h"
-#include "ctk4timIncludes/adcModule.h"
+#include "ctk4timIncludes/lcdModule.h"
+#include "ctk4timIncludes/keyMatrixModule.h"
 
-/**
- * Step RGB Led
- */
-uchar stepRGBLed = 0;
-
-/**
- * Red RGB Value
- */
-uint red = 0;
-
-/**
- * Green RGB Value
- */
-uint green = 0;
-
-/**
- * Blue RGB Value
- */
-uint blue = 0;
+const uchar mensaje [] = "KeyMatrix Test";
 
 /*
  * @brief Main Program Loop
@@ -51,22 +33,34 @@ uint blue = 0;
  */
 void main(void)
 {
+	int data = 0;
+
 	// Stop Watchdog Timer
 	stopWatchdogTimer();
 
-	// Configure DCO Frequency 8 MHz
-	configureDCOFrequency8MHz();
+	// Configure DCO Frequency 1 MHz
+	configureDCOFrequency1MHz();
 
-	// Configure A0, A1 and A2 Input
-	adcAnalogInputEnable(ADC_CH0);
-	adcAnalogInputEnable(ADC_CH1);
-	adcAnalogInputEnable(ADC_CH2);
+	// Init LCD Module
+	lcdInit();
 
-	// ADC Init
-	adcInit();
+	// KeyMatrix Init
+	keyMatrixInit();
 
-	// RGB Led Init
-	rgbLedInit();
+	// Write Init Message
+	lcdWriteMessage(1,1,mensaje);
+
+	for(;;)
+	{
+		do
+		{
+			data = keyMatrixRead();
+		}
+		while(data == -1);
+
+		// Write KeyPressed
+		lcdWriteSetPosition(2,1,keyMatrixKeyASCII(data));
+	}
 
 	// Enable Interrupts
 	enableInterrupts();
@@ -99,24 +93,6 @@ __interrupt void P2_ISR (void)
 #pragma vector = TIMER0_A1_VECTOR
 __interrupt void TA1_ISR (void)
 {
-	if(stepRGBLed == 0)
-	{
-		// Obtain ADC Value First Time
-		red = adcStartWaitConversion(ADC_CH0);
-		red >>= 2;
-		green = adcStartWaitConversion(ADC_CH1);
-		green >>= 2;
-		blue = adcStartWaitConversion(ADC_CH2);
-		blue >>= 2;
-
-		// RGB Led Update
-		stepRGBLed = rgbLedUpdate(red, green, blue);
-	}
-	else
-	{
-		// RGB Led Update
-		stepRGBLed = rgbLedUpdate(red, green, blue);
-	}
 
 	// Clear Timer Interrupt
 	TACTL &= ~(TAIFG);

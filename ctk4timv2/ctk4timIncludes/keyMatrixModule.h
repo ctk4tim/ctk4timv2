@@ -36,7 +36,7 @@ void keyMatrixInit();
  * @brief Key Matrix Read Data
  * @return Key Pressed Value
  */
-uchar keyMatrixRead();
+int keyMatrixRead();
 
 /**
  * @brief Read Row Value
@@ -45,5 +45,12 @@ uchar keyMatrixRead();
  * @return Key Pressed Value
  */
 int readRow(uchar row, uchar column);
+
+/**
+ * @brief Convert KeyValue in ASCII Value
+ * @param keyValue KeyPressed
+ * @return ASCII KeyPress Value
+ */
+uchar keyMatrixKeyASCII(int keyValue);
 
 #endif
