@@ -1,7 +1,7 @@
 /**
  *  @file keyMatrixModule.c
  *  @brief Module that allows controls Key Matrix
- *  @date 06/08/2012
+ *  @date 10/08/2012
  *  @version 1.0.0
  *
  *  C Toolkit For MSP430 Texas Instrument Microcontroller
@@ -26,10 +26,10 @@
 /**
  * ASCII Table Conversion
  */
-uchar const keyMatrixData [16] = {'0','1','2','3',	// Row 0
-								  '4','5','6','7', 	// Row 1
-								  '8','9','A','B', 	// Row 2
-								  'C','D','E','F'};	// Row 3
+uchar const keyMatrixData [16] = {'0','1','2','3',	// Row 1
+								  '4','5','6','7', 	// Row 2
+								  '8','9','A','B', 	// Row 3
+								  'C','D','E','F'};	// Row 4
 /**
  * @brief Init Key Matrix
  */
@@ -66,110 +66,127 @@ int keyMatrixRead()
 	int dataRead = -1;
 
 	// Scan Rows and Columns
-	for( i = 0; i < 4; i++)
+	for(i = 1; i <= 4; i++)
 	{
-		for( j = 0; j < 4; j++)
+		for(j = 1; j <= 4; j++)
 		{
-			// Read Key
-			dataRead = readRow(i,j);
+			switch(j)
+			{
+				case 1:
+					// Read Key Pressed Column 1
+					pinDigitalWriteOff(KEYMATRIX_Y1);
+					dataRead = readRow();
+					pinDigitalWriteOn(KEYMATRIX_Y1);
+					break;
+				case 2:
+					// Read Key Pressed Column 2
+					pinDigitalWriteOff(KEYMATRIX_Y2);
+					dataRead = readRow();
+					pinDigitalWriteOn(KEYMATRIX_Y2);
+					break;
+				case 3:
+					// Read Key Pressed Column 3
+					pinDigitalWriteOff(KEYMATRIX_Y3);
+					dataRead = readRow();
+					pinDigitalWriteOn(KEYMATRIX_Y3);
+					break;
+				case 4:
+					// Read Key Pressed Column 4
+					pinDigitalWriteOff(KEYMATRIX_Y4);
+					dataRead = readRow();
+					pinDigitalWriteOn(KEYMATRIX_Y4);
+					break;
+			}
 
-			// Exit when Key Pressed
+			// If key pressed, complete key value
 			if(dataRead != -1)
 			{
+				switch(j)
+				{
+					case 1:
+						dataRead += 0;
+						break;
+					case 2:
+						dataRead += 1;
+						break;
+					case 3:
+						dataRead += 2;
+						break;
+					case 4:
+						dataRead += 3;
+						break;
+				}
 				break;
 			}
+		}
+
+		// If key pressed, finish
+		if(dataRead != -1)
+		{
+			break;
 		}
 	}
 	return dataRead;
 }
 
 /**
- * @brief Read Row Value
- * @param row Row to Read
- * @param column Column to Read
- * @return Key Pressed Value
+ * @brief Read Row
+ * @return Row Value
  */
-int readRow(uchar row, uchar column)
+int readRow()
 {
 	int rowValue = -1;
 
-	switch(column)
+	if(pinDigitalRead(KEYMATRIX_X1) == 0)
 	{
-		case 0:
-			// Read Key Pressed Column 0
-			pinDigitalWriteOff(KEYMATRIX_Y1);
-			if(pinDigitalRead(KEYMATRIX_X1) == 0)
-			{
-				delayMs(50);
-				if(pinDigitalRead(KEYMATRIX_X1) == 0)
-				{
-					rowValue = 0;
-				}
-			}
-			pinDigitalWriteOn(KEYMATRIX_Y1);
-			break;
-		case 1:
-			// Read Key Pressed Column 1
-			pinDigitalWriteOff(KEYMATRIX_Y2);
-			if(pinDigitalRead(KEYMATRIX_X2) == 0)
-			{
-				delayMs(50);
-				if(pinDigitalRead(KEYMATRIX_X2) == 0)
-				{
-					rowValue = 1;
-				}
-			}
-			pinDigitalWriteOn(KEYMATRIX_Y2);
-			break;
-		case 2:
-			// Read Key Pressed Column 2
-			pinDigitalWriteOff(KEYMATRIX_Y3);
-			if(pinDigitalRead(KEYMATRIX_X3) == 0)
-			{
-				delayMs(50);
-				if(pinDigitalRead(KEYMATRIX_X3) == 0)
-				{
-					rowValue = 2;
-				}
-			}
-			pinDigitalWriteOn(KEYMATRIX_Y3);
-			break;
-		case 3:
-			// Read Key Pressed Column 3
-			pinDigitalWriteOff(KEYMATRIX_Y4);
-			if(pinDigitalRead(KEYMATRIX_X4) == 0)
-			{
-				delayMs(50);
-				if(pinDigitalRead(KEYMATRIX_X4) == 0)
-				{
-					rowValue = 3;
-				}
-			}
-			pinDigitalWriteOn(KEYMATRIX_Y4);
-			break;
+		delayMs(50);
+		if(pinDigitalRead(KEYMATRIX_X1) == 0)
+		{
+			rowValue = 0;
+
+			// Wait liberate key
+			while(pinDigitalRead(KEYMATRIX_X1) == 0);
+		}
 	}
 
-	// If key pressed, complete key value
-	if(rowValue != -1)
+	if(pinDigitalRead(KEYMATRIX_X2) == 0)
 	{
-		switch(row)
+		delayMs(50);
+		if(pinDigitalRead(KEYMATRIX_X2) == 0)
 		{
-			case 0:
-				rowValue += 0;
-				break;
-			case 1:
-				rowValue += 4;
-				break;
-			case 2:
-				rowValue += 8;
-				break;
-			case 3:
-				rowValue += 12;
-				break;
+			rowValue = 4;
+
+			// Wait liberate key
+			while(pinDigitalRead(KEYMATRIX_X2) == 0);
+		}
+	}
+
+	if(pinDigitalRead(KEYMATRIX_X3) == 0)
+	{
+		delayMs(50);
+		if(pinDigitalRead(KEYMATRIX_X3) == 0)
+		{
+			rowValue = 8;
+
+			// Wait liberate key
+			while(pinDigitalRead(KEYMATRIX_X3) == 0);
+		}
+	}
+
+	if(pinDigitalRead(KEYMATRIX_X4) == 0)
+	{
+		delayMs(50);
+		if(pinDigitalRead(KEYMATRIX_X4) == 0)
+		{
+			rowValue = 12;
+
+			// Wait liberate key
+			while(pinDigitalRead(KEYMATRIX_X4) == 0);
 		}
 	}
 	return rowValue;
 }
+
 
 /**
  * @brief Convert KeyValue in ASCII Value

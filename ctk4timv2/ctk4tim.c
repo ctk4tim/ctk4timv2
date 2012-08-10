@@ -33,7 +33,7 @@ const uchar mensaje [] = "KeyMatrix Test";
  */
 void main(void)
 {
-	int data = 0;
+	int i, data = 0;
 
 	// Stop Watchdog Timer
 	stopWatchdogTimer();
@@ -52,14 +52,20 @@ void main(void)
 
 	for(;;)
 	{
-		do
-		{
-			data = keyMatrixRead();
-		}
-		while(data == -1);
+		// Set LCD Position
+		lcdSetCursor(2,1);
 
-		// Write KeyPressed
-		lcdWriteSetPosition(2,1,keyMatrixKeyASCII(data));
+		for(i = 1; i <=16; i++)
+		{
+			do
+			{
+				data = keyMatrixRead();
+			}
+			while(data == -1);
+
+			// Write KeyPressed
+			lcdWrite(keyMatrixKeyASCII(data));
+		}
 	}
 
 	// Enable Interrupts

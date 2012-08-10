@@ -1,7 +1,7 @@
 /**
  *  @file keyMatrixModule.h
  *  @brief Module that allows controls Key Matrix
- *  @date 01/03/2012
+ *  @date 10/08/2012
  *  @version 1.0.0
  *
  *  C Toolkit For MSP430 Texas Instrument Microcontroller
@@ -39,12 +39,10 @@ void keyMatrixInit();
 int keyMatrixRead();
 
 /**
- * @brief Read Row Value
- * @param row Row to Read
- * @param column Column to Read
- * @return Key Pressed Value
+ * @brief Read Row
+ * @return Row Value
  */
-int readRow(uchar row, uchar column);
+int readRow();
 
 /**
  * @brief Convert KeyValue in ASCII Value
