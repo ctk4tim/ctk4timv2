@@ -26,7 +26,7 @@
 /**
  * Display 7-Seg Font
  */
-uchar const display7SegFont [16]= {0x40,0x7C,0x24,0x30,0x19,0x12,0x02,0x78,0x00,0x18,0x08,0x03,0x27,0x21,0x06,0x0E};
+uchar const display7SegFont [16]= {0x40,0x79,0x24,0x30,0x19,0x12,0x02,0x78,0x00,0x18,0x08,0x03,0x27,0x21,0x06,0x0E};
 /**
  * Display 7-Seg Buffer
  */
@@ -135,14 +135,13 @@ void display7SegUpdate()
 	pinDigitalWriteOn(DISPLAY7SEG_F);
 	pinDigitalWriteOn(DISPLAY7SEG_G);
 
-	// Increment Column and Buffer Pointer
+	// Increment Display
 	displayCounter++;
-	bufferDisplay7SegPtr++;
 
-	// Reset Column Counter
-	if(displayCounter >= MAX_DISPLAYS)
+	// Reset Display Counter
+	if(displayCounter > MAX_DISPLAYS)
 	{
-		displayCounter = 0;
+		displayCounter = 1;
 
 		// Point to buffer
 		bufferDisplay7SegPtr = (uchar *) &bufferDisplay7Seg;
@@ -153,6 +152,9 @@ void display7SegUpdate()
 
 	// Set 7-Seg Segments
 	display7SegSetSegments(display7SegFont[*bufferDisplay7SegPtr]);
+
+	// Increment Buffer Pointer
+	bufferDisplay7SegPtr++;
 }
 
 /**
@@ -164,7 +166,7 @@ void display7SegSelectDisplay(uchar display)
 	// On Column
 	pinDigitalWriteOn(SRDAT_LEDMATRIX);
 
-	if(display == 0)
+	if(display == 1)
 	{
 		pinDigitalWriteOff(SRDAT_LEDMATRIX);
 	}
@@ -181,31 +183,31 @@ void display7SegSelectDisplay(uchar display)
 void display7SegSetSegments(uchar dataSegments)
 {
 	// Set Data Row
-	if((dataSegments & BIT0) != 0)
+	if((dataSegments & BIT0) == 0)
 	{
 		pinDigitalWriteOff(DISPLAY7SEG_A);
 	}
-	if((dataSegments & BIT1) != 0)
+	if((dataSegments & BIT1) == 0)
 	{
 		pinDigitalWriteOff(DISPLAY7SEG_B);
 	}
-	if((dataSegments & BIT2) != 0)
+	if((dataSegments & BIT2) == 0)
 	{
 		pinDigitalWriteOff(DISPLAY7SEG_C);
 	}
-	if((dataSegments & BIT3) != 0)
+	if((dataSegments & BIT3) == 0)
 	{
 		pinDigitalWriteOff(DISPLAY7SEG_D);
 	}
-	if((dataSegments & BIT4) != 0)
+	if((dataSegments & BIT4) == 0)
 	{
 		pinDigitalWriteOff(DISPLAY7SEG_E);
 	}
-	if((dataSegments & BIT5) != 0)
+	if((dataSegments & BIT5) == 0)
 	{
 		pinDigitalWriteOff(DISPLAY7SEG_F);
 	}
-	if((dataSegments & BIT6) != 0)
+	if((dataSegments & BIT6) == 0)
 	{
 		pinDigitalWriteOff(DISPLAY7SEG_G);
 	}

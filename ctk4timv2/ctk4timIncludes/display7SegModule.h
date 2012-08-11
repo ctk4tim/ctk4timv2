@@ -30,7 +30,7 @@
 /**
  * Max Displays Constant
  */
-#define MAX_DISPLAYS 				5
+#define MAX_DISPLAYS 				4
 
 /**
  * Max Buffer Chars
