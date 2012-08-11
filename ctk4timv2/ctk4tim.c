@@ -22,10 +22,7 @@
  */
 
 #include "ctk4timIncludes/coreModule.h"
-#include "ctk4timIncludes/lcdModule.h"
-#include "ctk4timIncludes/keyMatrixModule.h"
-
-const uchar mensaje [] = "KeyMatrix Test";
+#include "ctk4timIncludes/display7SegModule.h"
 
 /*
  * @brief Main Program Loop
@@ -33,8 +30,6 @@ const uchar mensaje [] = "KeyMatrix Test";
  */
 void main(void)
 {
-	int i, data = 0;
-
 	// Stop Watchdog Timer
 	stopWatchdogTimer();
 
@@ -42,31 +37,13 @@ void main(void)
 	configureDCOFrequency1MHz();
 
 	// Init LCD Module
-	lcdInit();
+	display7SegInit();
 
-	// KeyMatrix Init
-	keyMatrixInit();
-
-	// Write Init Message
-	lcdWriteMessage(1,1,mensaje);
-
-	for(;;)
-	{
-		// Set LCD Position
-		lcdSetCursor(2,1);
-
-		for(i = 1; i <=16; i++)
-		{
-			do
-			{
-				data = keyMatrixRead();
-			}
-			while(data == -1);
-
-			// Write KeyPressed
-			lcdWrite(keyMatrixKeyASCII(data));
-		}
-	}
+	// Write 1234 in buffer
+	display7SegWriteBuffer(1, 0x01);
+	display7SegWriteBuffer(2, 0x02);
+	display7SegWriteBuffer(3, 0x03);
+	display7SegWriteBuffer(4, 0x04);
 
 	// Enable Interrupts
 	enableInterrupts();
@@ -99,6 +76,8 @@ __interrupt void P2_ISR (void)
 #pragma vector = TIMER0_A1_VECTOR
 __interrupt void TA1_ISR (void)
 {
+	// Display Update
+	display7SegUpdate();
 
 	// Clear Timer Interrupt
 	TACTL &= ~(TAIFG);
