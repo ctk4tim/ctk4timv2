@@ -21,7 +21,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef DEMOVERSION130
+#ifdef DEMOVERSION130
 
 #include "../ctk4timIncludes/coreModule.h"
 #include "../ctk4timIncludes/ioModule.h"

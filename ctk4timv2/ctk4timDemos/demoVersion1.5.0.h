@@ -21,7 +21,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef DEMOVERSION150
+#ifdef DEMOVERSION150
 
 /*
  * @brief Application Program Loop

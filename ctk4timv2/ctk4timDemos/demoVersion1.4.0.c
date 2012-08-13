@@ -21,7 +21,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef DEMOVERSION140
+#ifdef DEMOVERSION140
 
 #include "../ctk4timIncludes/coreModule.h"
 #include "../ctk4timIncludes/ledMatrixModule.h"

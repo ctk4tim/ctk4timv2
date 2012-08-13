@@ -23,6 +23,25 @@
 
 #include "ctk4timIncludes/coreModule.h"
 
+#define DEMO
+
+#ifdef DEMO
+
+/*
+ * Point Demo Application
+ */
+#include "ctk4timDemos/demoVersion1.0.0.h"
+#define app 		application##Demo100
+#define isrP1 		isrPort1##Demo100
+#define isrP2 		isrPort2##Demo100
+#define isrTimCh1	isrTimerACh1##Demo100
+#define isrTimCh0	isrTimerACh0##Demo100
+#define isrWDT		isrWDT##Demo100
+#define isrComp		isrComparator##Demo100
+#define isrNMI		isrNMI##Demo100
+
+#else
+
 /*
  * Point Main Application
  */
@@ -36,19 +55,7 @@
 #define isrComp		isrComparator##App
 #define isrNMI		isrNMI##App
 
-
-/*
- * Point Demo Application
- */
-/*#include "ctk4timDemos/demoVersion1.0.0.h"
-#define app 		application##Demo100
-#define isrP1 		isrPort1##Demo100
-#define isrP2 		isrPort2##Demo100
-#define isrTimCh1	isrTimerACh1##Demo100
-#define isrTimCh0	isrTimerACh0##Demo100
-#define isrWDT		isrWDT##Demo100
-#define isrComp		isrComparator##Demo100
-#define isrNMI		isrNMI##Demo100*/
+#endif
 
 /*
  * @brief Main Program Loop
