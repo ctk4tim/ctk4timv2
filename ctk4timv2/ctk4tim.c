@@ -1,8 +1,8 @@
 /**
  *  @file ctk4tim.c
  *  @brief Main Program Loop
- *  @date 29/02/2012
- *  @version 1.0.3
+ *  @date 13/08/2012
+ *  @version 1.0.0
  *
  *  C Toolkit For MSP430 Texas Instrument Microcontroller
  *  Copyright (C) 2012  Leandro Perez Guatibonza
@@ -22,28 +22,33 @@
  */
 
 #include "ctk4timIncludes/coreModule.h"
-#include "ctk4timIncludes/rgbLedModule.h"
-#include "ctk4timIncludes/adcModule.h"
 
-/**
- * Step RGB Led
+/*
+ * Point Main Application
  */
-uchar stepRGBLed = 0;
+#include "ctk4timApp.h"
+#define app 		application##App
+#define isrP1 		isrPort1##App
+#define isrP2 		isrPort2##App
+#define isrTimCh1	isrTimerACh1##App
+#define isrTimCh0	isrTimerACh0##App
+#define isrWDT		isrWDT##App
+#define isrComp		isrComparator##App
+#define isrNMI		isrNMI##App
 
-/**
- * Red RGB Value
- */
-uint red = 0;
 
-/**
- * Green RGB Value
+/*
+ * Point Demo Application
  */
-uint green = 0;
-
-/**
- * Blue RGB Value
- */
-uint blue = 0;
+/*#include "ctk4timDemos/demoVersion1.0.0.h"
+#define app 		application##Demo100
+#define isrP1 		isrPort1##Demo100
+#define isrP2 		isrPort2##Demo100
+#define isrTimCh1	isrTimerACh1##Demo100
+#define isrTimCh0	isrTimerACh0##Demo100
+#define isrWDT		isrWDT##Demo100
+#define isrComp		isrComparator##Demo100
+#define isrNMI		isrNMI##Demo100*/
 
 /*
  * @brief Main Program Loop
@@ -51,28 +56,7 @@ uint blue = 0;
  */
 void main(void)
 {
-	// Stop Watchdog Timer
-	stopWatchdogTimer();
-
-	// Configure DCO Frequency 8 MHz
-	configureDCOFrequency8MHz();
-
-	// Configure A0, A1 and A2 Input
-	adcAnalogInputEnable(ADC_CH0);
-	adcAnalogInputEnable(ADC_CH1);
-	adcAnalogInputEnable(ADC_CH2);
-
-	// ADC Init
-	adcInit();
-
-	// RGB Led Init
-	rgbLedInit();
-
-	// Enable Interrupts
-	enableInterrupts();
-
-	// Entry Low Power Mode 0
-	entryLowPowerMode0();
+	app();
 }
 
 /**
@@ -81,7 +65,7 @@ void main(void)
 #pragma vector = PORT1_VECTOR
 __interrupt void P1_ISR (void)
 {
-
+	isrP1();
 }
 
 /**
@@ -90,7 +74,7 @@ __interrupt void P1_ISR (void)
 #pragma vector = PORT2_VECTOR
 __interrupt void P2_ISR (void)
 {
-
+	isrP2();
 }
 
 /**
@@ -99,27 +83,7 @@ __interrupt void P2_ISR (void)
 #pragma vector = TIMER0_A1_VECTOR
 __interrupt void TA1_ISR (void)
 {
-	if(stepRGBLed == 0)
-	{
-		// Obtain ADC Value First Time
-		red = adcStartWaitConversion(ADC_CH0);
-		red >>= 2;
-		green = adcStartWaitConversion(ADC_CH1);
-		green >>= 2;
-		blue = adcStartWaitConversion(ADC_CH2);
-		blue >>= 2;
-
-		// RGB Led Update
-		stepRGBLed = rgbLedUpdate(red, green, blue);
-	}
-	else
-	{
-		// RGB Led Update
-		stepRGBLed = rgbLedUpdate(red, green, blue);
-	}
-
-	// Clear Timer Interrupt
-	TACTL &= ~(TAIFG);
+	isrTimCh1();
 }
 
 /**
@@ -128,8 +92,7 @@ __interrupt void TA1_ISR (void)
 #pragma vector = TIMER0_A0_VECTOR
 __interrupt void TA0_ISR (void)
 {
-	// Clear Timer Interrupt
-	TACTL &= ~(TAIFG);
+	isrTimCh0();
 }
 
 /**
@@ -138,7 +101,7 @@ __interrupt void TA0_ISR (void)
 #pragma vector = WDT_VECTOR
 __interrupt void WDT_ISR (void)
 {
-
+	isrWDT();
 }
 
 /**
@@ -147,7 +110,7 @@ __interrupt void WDT_ISR (void)
 #pragma vector = COMPARATORA_VECTOR
 __interrupt void CMPA_ISR (void)
 {
-
+	isrComp();
 }
 
 /**
@@ -156,5 +119,5 @@ __interrupt void CMPA_ISR (void)
 #pragma vector = NMI_VECTOR
 __interrupt void NMI_ISR (void)
 {
-
+	isrNMI();
 }
