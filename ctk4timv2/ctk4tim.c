@@ -47,6 +47,9 @@
 #ifdef DEMOVERSION160
 	#include "ctk4timDemos/demoVersion1.6.0.h"
 #endif
+#ifdef DEMOVERSION200
+	#include "ctk4timDemos/demoVersion2.0.0.h"
+#endif
 #ifdef APP
 	#include "ctk4timApp.h"
 #endif
