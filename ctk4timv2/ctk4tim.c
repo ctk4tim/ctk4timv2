@@ -24,6 +24,10 @@
 #include "ctk4timIncludes/coreModule.h"
 #include "ctk4timIncludes/display7SegModule.h"
 
+const uchar display7SegMessage [] ={0x00,0x01,0x02,0x03,
+									0x04,0x05,0x06,0x07,
+									0x08,0x09,0x0A,0x0B,
+									0x0C,0x0D,0x0E,0x0F};
 /*
  * @brief Main Program Loop
  * @param void Void
@@ -39,11 +43,11 @@ void main(void)
 	// Init LCD Module
 	display7SegInit();
 
+	// Set Scroll On and Time Scroll
+	display7SegScrollOn(100);
+
 	// Write 1234 in buffer
-	display7SegWriteBuffer(1, 0x01);
-	display7SegWriteBuffer(2, 0x02);
-	display7SegWriteBuffer(3, 0x03);
-	display7SegWriteBuffer(4, 0x04);
+	display7SegWriteMessage(5,display7SegMessage);
 
 	// Enable Interrupts
 	enableInterrupts();

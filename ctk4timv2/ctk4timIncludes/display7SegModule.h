@@ -38,6 +38,11 @@
 #define MAX_BUFFER_DISPLAY_CHARS	20
 
 /**
+ * Max Buffer Offset
+ */
+#define MAX_BUFFER_DISPLAY_OFFSET	(MAX_BUFFER_DISPLAY_CHARS - 1)
+
+/**
  * @brief Init Display 7-Seg
  */
 void display7SegInit();
@@ -70,6 +75,17 @@ void display7SegSelectDisplay(uchar display);
  * @param dataSegments Data by Row
  */
 void display7SegSetSegments(uchar dataSegments);
+
+/**
+ * @brief Led Matrix Scroll On
+ * @param setTimeScroll Set Time Scroll
+ */
+void display7SegScrollOn(uchar setTimeScroll);
+
+/**
+ * @brief Led Matrix Scroll Off
+ */
+void display7SegScrollOff();
 
 /**
  * @brief Write Message into Display 7-Seg Buffer

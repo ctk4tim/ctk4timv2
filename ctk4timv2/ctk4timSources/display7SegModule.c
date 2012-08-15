@@ -43,6 +43,26 @@ uchar displayCounter = 0;
 uchar *bufferDisplay7SegPtr;
 
 /**
+ * Display 7-Seg Offset Buffer
+ */
+uchar offsetBufferDisplay7Seg = 0;
+
+/**
+ * Display 7-Seg Delay Scroll
+ */
+uchar delayScrollDisplay7Seg = 0;
+
+/**
+ * Display 7-Seg Time Scroll
+ */
+uchar timeScrollDisplay7Seg = 0;
+
+/**
+ * Display 7-Seg Scroll On
+ */
+uchar scrollOnDisplay7Seg = 0;
+
+/**
  * @brief Init Display 7-Seg
  */
 void display7SegInit()
@@ -135,6 +155,24 @@ void display7SegUpdate()
 	pinDigitalWriteOn(DISPLAY7SEG_F);
 	pinDigitalWriteOn(DISPLAY7SEG_G);
 
+	// Verify Scroll On/Off and calculate Buffer Offset
+	if(scrollOnDisplay7Seg)
+	{
+		delayScrollDisplay7Seg++;
+
+		if(delayScrollDisplay7Seg == timeScrollDisplay7Seg)
+		{
+			delayScrollDisplay7Seg = 0;
+
+			offsetBufferDisplay7Seg++;
+
+			if(offsetBufferDisplay7Seg > MAX_BUFFER_DISPLAY_OFFSET)
+			{
+				offsetBufferDisplay7Seg = 0;
+			}
+		}
+	}
+
 	// Increment Display
 	displayCounter++;
 
@@ -145,6 +183,7 @@ void display7SegUpdate()
 
 		// Point to buffer
 		bufferDisplay7SegPtr = (uchar *) &bufferDisplay7Seg;
+		bufferDisplay7SegPtr += offsetBufferDisplay7Seg;
 	}
 
 	// Select Display
@@ -211,6 +250,28 @@ void display7SegSetSegments(uchar dataSegments)
 	{
 		pinDigitalWriteOff(DISPLAY7SEG_G);
 	}
+}
+
+/**
+ * @brief Led Matrix Scroll On
+ * @param setTimeScroll Set Time Scroll
+ */
+void display7SegScrollOn(uchar setTimeScroll)
+{
+	// Enabled Scroll
+	scrollOnDisplay7Seg = 1;
+
+	// Set Time Scroll
+	timeScrollDisplay7Seg = setTimeScroll / 2;
+}
+
+/**
+ * @brief Led Matrix Scroll Off
+ */
+void display7SegScrollOff()
+{
+	// Disabled Scroll
+	scrollOnDisplay7Seg = 0;
 }
 
 /**
