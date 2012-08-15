@@ -35,12 +35,12 @@
 /**
  * Max Buffer Chars
  */
-#define MAX_BUFFER_DISPLAY_CHARS	20
+#define MAX_BUFFER_DISPLAY_CHARS	24
 
 /**
  * Max Buffer Offset
  */
-#define MAX_BUFFER_DISPLAY_OFFSET	(MAX_BUFFER_DISPLAY_CHARS - 1)
+#define MAX_BUFFER_DISPLAY_OFFSET	MAX_BUFFER_DISPLAY_CHARS - MAX_DISPLAYS
 
 /**
  * @brief Init Display 7-Seg

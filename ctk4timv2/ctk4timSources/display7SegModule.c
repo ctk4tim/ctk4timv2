@@ -124,7 +124,7 @@ void display7SegBufferClear()
 
 	for(i = 0; i < MAX_BUFFER_DISPLAY_CHARS; i++)
 	{
-		bufferDisplay7Seg [i] = 0;
+		bufferDisplay7Seg [i] = 0xFF;
 	}
 }
 
@@ -283,7 +283,7 @@ void display7SegWriteMessage(uchar display, const uchar message [])
 {
 	int i = 0;
 
-	while(message[i] != 0)
+	while(message[i] != 0xFF)
 	{
 		display7SegWriteBuffer(display, message[i]);
 
