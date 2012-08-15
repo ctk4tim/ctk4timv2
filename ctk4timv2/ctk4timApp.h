@@ -27,48 +27,49 @@
  *  @par External Group
  */
 
-#ifndef CTK4TIMAPP_H_
-#define CTK4TIMAPP_H_
+#include "ctk4tim.h"
+
+#ifdef APP
 
 /*
  * @brief Application Program
  * @param void Void
  */
-void applicationApp();
+void application();
 
 /**
  * @brief Interrupt Service Routine Port 1
  */
-void isrPort1App();
+void isrPort1();
 
 /**
  * @brief Interrupt Service Routine Port 2
  */
-void isrPort2App();
+void isrPort2();
 
 /**
  * @brief Interrupt Service Routine Timer A Channel 1
  */
-void isrTimerACh1App();
+void isrTimerACh1();
 
 /**
  * @brief Interrupt Service Routine Timer A Channel 0
  */
-void isrTimerACh0App();
+void isrTimerACh0();
 
 /**
  * @brief Interrupt Service Routine WatchDog Timer
  */
-void isrWDTApp();
+void isrWDT();
 
 /**
  * @brief Interrupt Service Routine Comparator A
  */
-void isrComparatorAApp();
+void isrComparatorA();
 
 /**
  * @brief Interrupt Service Routine NMI
  */
-void isrNMIApp();
+void isrNMI();
 
 #endif

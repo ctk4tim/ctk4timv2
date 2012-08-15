@@ -1,7 +1,7 @@
 /**
- *  @file ctk4timApp.c
- *  @brief Application Program
- *  @date 13/08/2012
+ *  @file demoVersion1.0.0.h
+ *  @brief Demo Version 1.0.0
+ *  @date 14/08/2012
  *  @version 1.0.0
  *
  *  C Toolkit For MSP430 Texas Instrument Microcontroller
@@ -21,48 +21,48 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#define DEMOVERSION100
+#include "../ctk4tim.h"
 
 #ifdef DEMOVERSION100
 
 /*
  * @brief Application Program Loop
  */
-void applicationDemo100();
+void application();
 
 /**
  * @brief Interrupt Service Routine Port 1
  */
-void isrPort1Demo100();
+void isrPort1();
 
 /**
  * @brief Interrupt Service Routine Port 2
  */
-void isrPort2Demo100();
+void isrPort2();
 
 /**
  * @brief Interrupt Service Routine Timer A Channel 1
  */
-void isrTimerACh1Demo100();
+void isrTimerACh1();
 
 /**
  * @brief Interrupt Service Routine Timer A Channel 0
  */
-void isrTimerACh0Demo100();
+void isrTimerACh0();
 
 /**
  * @brief Interrupt Service Routine WatchDog Timer
  */
-void isrWDTDemo100();
+void isrWDT();
 
 /**
  * @brief Interrupt Service Routine Comparator A
  */
-void isrComparatorDemo100();
+void isrComparatorA();
 
 /**
  * @brief Interrupt Service Routine NMI
  */
-void isrNMIDemo100();
+void isrNMI();
 
 #endif

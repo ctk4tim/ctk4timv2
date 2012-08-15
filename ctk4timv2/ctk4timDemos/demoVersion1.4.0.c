@@ -1,7 +1,7 @@
 /**
- *  @file ctk4timApp.c
- *  @brief Application Program
- *  @date 13/08/2012
+ *  @file demoVersion1.4.0.c
+ *  @brief Demo Version 1.4.0
+ *  @date 14/08/2012
  *  @version 1.0.0
  *
  *  C Toolkit For MSP430 Texas Instrument Microcontroller
@@ -21,6 +21,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "demoVersion1.4.0.h"
+
 #ifdef DEMOVERSION140
 
 #include "../ctk4timIncludes/coreModule.h"
@@ -34,7 +36,7 @@ const uchar ledMatrixMessage [] = " CTK4TIM! ";
 /*
  * @brief Application Program Loop
  */
-void applicationDemo140()
+void application()
 {
 	// Stop Watchdog Timer
 	stopWatchdogTimer();
@@ -61,7 +63,7 @@ void applicationDemo140()
 /**
  * @brief Interrupt Service Routine Port 1
  */
-void isrPort1Demo140()
+void isrPort1()
 {
 
 }
@@ -69,7 +71,7 @@ void isrPort1Demo140()
 /**
  * @brief Interrupt Service Routine Port 2
  */
-void isrPort2Demo140()
+void isrPort2()
 {
 
 }
@@ -77,7 +79,7 @@ void isrPort2Demo140()
 /**
  * @brief Interrupt Service Routine Timer A Channel 1
  */
-void isrTimerACh1Demo140()
+void isrTimerACh1()
 {
 	// Led Matrix Update
 	ledMatrixUpdate();
@@ -89,7 +91,7 @@ void isrTimerACh1Demo140()
 /**
  * @brief Interrupt Service Routine Timer A Channel 0
  */
-void isrTimerACh0Demo140()
+void isrTimerACh0()
 {
 	// Clear Timer Interrupt
 	TACTL &= ~(TAIFG);
@@ -98,7 +100,7 @@ void isrTimerACh0Demo140()
 /**
  * @brief Interrupt Service Routine WatchDog Timer
  */
-void isrWDTDemo140()
+void isrWDT()
 {
 
 }
@@ -106,7 +108,7 @@ void isrWDTDemo140()
 /**
  * @brief Interrupt Service Routine Comparator A
  */
-void isrComparatorDemo140()
+void isrComparatorA()
 {
 
 }
@@ -114,7 +116,7 @@ void isrComparatorDemo140()
 /**
  * @brief Interrupt Service Routine NMI
  */
-void isrNMIDemo140()
+void isrNMI()
 {
 
 }

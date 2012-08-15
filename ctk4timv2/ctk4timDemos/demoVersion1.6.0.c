@@ -1,7 +1,7 @@
 /**
- *  @file ctk4timApp.c
- *  @brief Application Program
- *  @date 13/08/2012
+ *  @file demoVersion1.6.0.c
+ *  @brief Demo Version 1.6.0
+ *  @date 14/08/2012
  *  @version 1.0.0
  *
  *  C Toolkit For MSP430 Texas Instrument Microcontroller
@@ -20,6 +20,8 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+#include "demoVersion1.6.0.h"
 
 #ifdef DEMOVERSION160
 
@@ -50,7 +52,7 @@ uint blue = 0;
 /*
  * @brief Application Program Loop
  */
-void applicationDemo160()
+void application()
 {
 	// Stop Watchdog Timer
 	stopWatchdogTimer();
@@ -79,7 +81,7 @@ void applicationDemo160()
 /**
  * @brief Interrupt Service Routine Port 1
  */
-void isrPort1Demo160()
+void isrPort1()
 {
 
 }
@@ -87,7 +89,7 @@ void isrPort1Demo160()
 /**
  * @brief Interrupt Service Routine Port 2
  */
-void isrPort2Demo160()
+void isrPort2()
 {
 
 }
@@ -95,7 +97,7 @@ void isrPort2Demo160()
 /**
  * @brief Interrupt Service Routine Timer A Channel 1
  */
-void isrTimerACh1Demo160()
+void isrTimerACh1()
 {
 	if(stepRGBLed == 0)
 	{
@@ -123,7 +125,7 @@ void isrTimerACh1Demo160()
 /**
  * @brief Interrupt Service Routine Timer A Channel 0
  */
-void isrTimerACh0Demo160()
+void isrTimerACh0()
 {
 	// Clear Timer Interrupt
 	TACTL &= ~(TAIFG);
@@ -132,7 +134,7 @@ void isrTimerACh0Demo160()
 /**
  * @brief Interrupt Service Routine WatchDog Timer
  */
-void isrWDTDemo160()
+void isrWDT()
 {
 
 }
@@ -140,7 +142,7 @@ void isrWDTDemo160()
 /**
  * @brief Interrupt Service Routine Comparator A
  */
-void isrComparatorDemo160()
+void isrComparatorA()
 {
 
 }
@@ -148,7 +150,7 @@ void isrComparatorDemo160()
 /**
  * @brief Interrupt Service Routine NMI
  */
-void isrNMIDemo160()
+void isrNMI()
 {
 
 }

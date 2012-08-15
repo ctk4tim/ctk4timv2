@@ -21,10 +21,14 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "ctk4timApp.h"
+
+#ifdef APP
+
 /*
  * @brief Application Program Loop
  */
-void applicationApp()
+void application()
 {
 
 }
@@ -32,7 +36,7 @@ void applicationApp()
 /**
  * @brief Interrupt Service Routine Port 1
  */
-void isrPort1App()
+void isrPort1()
 {
 
 }
@@ -40,7 +44,7 @@ void isrPort1App()
 /**
  * @brief Interrupt Service Routine Port 2
  */
-void isrPort2App()
+void isrPort2()
 {
 
 }
@@ -50,7 +54,7 @@ void isrPort2App()
 /**
  * @brief Interrupt Service Routine Timer A Channel 1
  */
-void isrTimerACh1App()
+void isrTimerACh1()
 {
 
 }
@@ -58,7 +62,7 @@ void isrTimerACh1App()
 /**
  * @brief Interrupt Service Routine Timer A Channel 0
  */
-void isrTimerACh0App()
+void isrTimerACh0()
 {
 
 }
@@ -66,7 +70,7 @@ void isrTimerACh0App()
 /**
  * @brief Interrupt Service Routine WatchDog Timer
  */
-void isrWDTApp()
+void isrWDT()
 {
 
 }
@@ -74,7 +78,7 @@ void isrWDTApp()
 /**
  * @brief Interrupt Service Routine Comparator A
  */
-void isrComparatorApp()
+void isrComparatorA()
 {
 
 }
@@ -82,7 +86,9 @@ void isrComparatorApp()
 /**
  * @brief Interrupt Service Routine NMI
  */
-void isrNMIApp()
+void isrNMI()
 {
 
 }
+
+#endif

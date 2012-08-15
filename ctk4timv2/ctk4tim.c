@@ -1,7 +1,7 @@
 /**
  *  @file ctk4tim.c
  *  @brief Main Program Loop
- *  @date 13/08/2012
+ *  @date 14/08/2012
  *  @version 1.0.0
  *
  *  C Toolkit For MSP430 Texas Instrument Microcontroller
@@ -21,40 +21,34 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "ctk4timIncludes/coreModule.h"
-
-#define DEMO
-
-#ifdef DEMO
+#include "ctk4tim.h"
 
 /*
- * Point Demo Application
+ * App or Demo Selection
  */
-#include "ctk4timDemos/demoVersion1.0.0.h"
-#define app 		application##Demo100
-#define isrP1 		isrPort1##Demo100
-#define isrP2 		isrPort2##Demo100
-#define isrTimCh1	isrTimerACh1##Demo100
-#define isrTimCh0	isrTimerACh0##Demo100
-#define isrWDT		isrWDT##Demo100
-#define isrComp		isrComparator##Demo100
-#define isrNMI		isrNMI##Demo100
-
-#else
-
-/*
- * Point Main Application
- */
-#include "ctk4timApp.h"
-#define app 		application##App
-#define isrP1 		isrPort1##App
-#define isrP2 		isrPort2##App
-#define isrTimCh1	isrTimerACh1##App
-#define isrTimCh0	isrTimerACh0##App
-#define isrWDT		isrWDT##App
-#define isrComp		isrComparator##App
-#define isrNMI		isrNMI##App
-
+#ifdef DEMOVERSION100
+	#include "ctk4timDemos/demoVersion1.0.0.h"
+#endif
+#ifdef DEMOVERSION110
+	#include "ctk4timDemos/demoVersion1.1.0.h"
+#endif
+#ifdef DEMOVERSION120
+	#include "ctk4timDemos/demoVersion1.2.0.h"
+#endif
+#ifdef DEMOVERSION130
+	#include "ctk4timDemos/demoVersion1.3.0.h"
+#endif
+#ifdef DEMOVERSION140
+	#include "ctk4timDemos/demoVersion1.4.0.h"
+#endif
+#ifdef DEMOVERSION150
+	#include "ctk4timDemos/demoVersion1.5.0.h"
+#endif
+#ifdef DEMOVERSION160
+	#include "ctk4timDemos/demoVersion1.6.0.h"
+#endif
+#ifdef APP
+	#include "ctk4timApp.h"
 #endif
 
 /*
@@ -63,7 +57,7 @@
  */
 void main(void)
 {
-	app();
+	application();
 }
 
 /**
@@ -72,7 +66,7 @@ void main(void)
 #pragma vector = PORT1_VECTOR
 __interrupt void P1_ISR (void)
 {
-	isrP1();
+	isrPort1();
 }
 
 /**
@@ -81,7 +75,7 @@ __interrupt void P1_ISR (void)
 #pragma vector = PORT2_VECTOR
 __interrupt void P2_ISR (void)
 {
-	isrP2();
+	isrPort2();
 }
 
 /**
@@ -90,7 +84,7 @@ __interrupt void P2_ISR (void)
 #pragma vector = TIMER0_A1_VECTOR
 __interrupt void TA1_ISR (void)
 {
-	isrTimCh1();
+	isrTimerACh1();
 }
 
 /**
@@ -99,7 +93,7 @@ __interrupt void TA1_ISR (void)
 #pragma vector = TIMER0_A0_VECTOR
 __interrupt void TA0_ISR (void)
 {
-	isrTimCh0();
+	isrTimerACh0();
 }
 
 /**
@@ -117,7 +111,7 @@ __interrupt void WDT_ISR (void)
 #pragma vector = COMPARATORA_VECTOR
 __interrupt void CMPA_ISR (void)
 {
-	isrComp();
+	isrComparatorA();
 }
 
 /**

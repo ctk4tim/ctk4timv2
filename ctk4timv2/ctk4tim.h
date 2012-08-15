@@ -27,8 +27,9 @@
  *  @par External Group
  */
 
-#ifndef CTK4TIM_H_
-#define CTK4TIM_H_
+#include "ctk4timIncludes/coreModule.h"
+
+#define DEMOVERSION110
 
 /*
  * PushButton Definition
@@ -92,5 +93,3 @@
 #define RGBLED_BLUE		&P1OUT,BIT3
 #define RGBLED_GREEN	&P1OUT,BIT4
 #define RGBLED_RED		&P1OUT,BIT5
-
-#endif

@@ -1,7 +1,7 @@
 /**
- *  @file ctk4timApp.c
- *  @brief Application Program
- *  @date 13/08/2012
+ *  @file demoVersion1.1.0.c
+ *  @brief Demo Version 1.1.0
+ *  @date 14/08/2012
  *  @version 1.0.0
  *
  *  C Toolkit For MSP430 Texas Instrument Microcontroller
@@ -21,6 +21,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "demoVersion1.1.0.h"
+
 #ifdef DEMOVERSION110
 
 #include "../ctk4timIncludes/coreModule.h"
@@ -37,7 +39,7 @@ uchar digitToModify = 0;
 /*
  * @brief Application Program Loop
  */
-void applicationDemo110()
+void application()
 {
 	// Stop Watchdog Timer
 	stopWatchdogTimer();
@@ -91,7 +93,7 @@ void applicationDemo110()
 /**
  * @brief Interrupt Service Routine Port 1
  */
-void isrPort1Demo110()
+void isrPort1()
 {
 	// Process RTCSET Pin
 	if(pinDigitalIsPendingInterrupt(RTCSET))
@@ -253,7 +255,7 @@ void isrPort1Demo110()
 /**
  * @brief Interrupt Service Routine Port 2
  */
-void isrPort2Demo110()
+void isrPort2()
 {
 
 }
@@ -261,7 +263,7 @@ void isrPort2Demo110()
 /**
  * @brief Interrupt Service Routine Timer A Channel 1
  */
-void isrTimerACh1Demo110()
+void isrTimerACh1()
 {
 	// Increment RTC
 	rtcUpdateUp();
@@ -281,7 +283,7 @@ void isrTimerACh1Demo110()
 /**
  * @brief Interrupt Service Routine Timer A Channel 0
  */
-void isrTimerACh0Demo110()
+void isrTimerACh0()
 {
 	// Clear Timer Interrupt
 	TACTL &= ~(TAIFG);
@@ -290,7 +292,7 @@ void isrTimerACh0Demo110()
 /**
  * @brief Interrupt Service Routine WatchDog Timer
  */
-void isrWDTDemo110()
+void isrWDT()
 {
 
 }
@@ -298,7 +300,7 @@ void isrWDTDemo110()
 /**
  * @brief Interrupt Service Routine Comparator A
  */
-void isrComparatorDemo110()
+void isrComparatorA()
 {
 
 }
@@ -306,7 +308,7 @@ void isrComparatorDemo110()
 /**
  * @brief Interrupt Service Routine NMI
  */
-void isrNMIDemo110()
+void isrNMI()
 {
 
 }
