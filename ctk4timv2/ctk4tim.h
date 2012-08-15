@@ -29,7 +29,7 @@
 
 #include "ctk4timIncludes/coreModule.h"
 
-#define DEMOVERSION200
+#define DEMOVERSION210
 
 /*
  * PushButton Definition
@@ -95,8 +95,8 @@
 #define RGBLED_RED		&P1OUT,BIT5
 
 /*
-* Display 7-Seg
-*/
+ * Display 7-Seg Module
+ */
 #define DISPLAY7SEG_A &P1OUT,BIT0
 #define DISPLAY7SEG_B &P1OUT,BIT1
 #define DISPLAY7SEG_C &P1OUT,BIT2
@@ -107,3 +107,15 @@
 
 #define DISPLAY7SEG_SRCLK &P2OUT,BIT0
 #define DISPLAY7SEG_SRDAT &P2OUT,BIT1
+
+/*
+ * KeyMatrix Module
+ */
+#define	KEYMATRIX_X1	&P1IN,BIT0
+#define	KEYMATRIX_X2	&P1IN,BIT1
+#define	KEYMATRIX_X3	&P1IN,BIT2
+#define	KEYMATRIX_X4	&P1IN,BIT3
+#define	KEYMATRIX_Y1	&P1OUT,BIT4
+#define	KEYMATRIX_Y2	&P1OUT,BIT5
+#define	KEYMATRIX_Y3	&P1OUT,BIT6
+#define	KEYMATRIX_Y4	&P1OUT,BIT7

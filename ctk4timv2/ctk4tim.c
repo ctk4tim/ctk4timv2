@@ -50,6 +50,9 @@
 #ifdef DEMOVERSION200
 	#include "ctk4timDemos/demoVersion2.0.0.h"
 #endif
+#ifdef DEMOVERSION210
+	#include "ctk4timDemos/demoVersion2.1.0.h"
+#endif
 #ifdef APP
 	#include "ctk4timApp.h"
 #endif

@@ -1,7 +1,7 @@
 /**
- *  @file keyMatrixModule.h
- *  @brief Module that allows controls Key Matrix
- *  @date 10/08/2012
+ *  @file demoVersion2.1.0.h
+ *  @brief Demo Version 2.1.0
+ *  @date 15/08/2012
  *  @version 1.0.0
  *
  *  C Toolkit For MSP430 Texas Instrument Microcontroller
@@ -21,34 +21,48 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef KEYMATRIXMODULE_H_
-#define KEYMATRIXMODULE_H_
+#include "../ctk4tim.h"
 
-#include "coreModule.h"
-#include "ioModule.h"
+#ifdef DEMOVERSION210
+
+/*
+ * @brief Application Program Loop
+ */
+void application();
 
 /**
- * @brief Init Key Matrix
+ * @brief Interrupt Service Routine Port 1
  */
-void keyMatrixInit();
+void isrPort1();
 
 /**
- * @brief Key Matrix Read Data
- * @return Key Pressed Value
+ * @brief Interrupt Service Routine Port 2
  */
-int keyMatrixRead();
+void isrPort2();
 
 /**
- * @brief Read Row
- * @return Row Value
+ * @brief Interrupt Service Routine Timer A Channel 1
  */
-int readRow();
+void isrTimerACh1();
 
 /**
- * @brief Convert KeyValue in ASCII Value
- * @param keyValue KeyPressed
- * @return ASCII KeyPress Value
+ * @brief Interrupt Service Routine Timer A Channel 0
  */
-uchar keyMatrixKeyASCII(int keyValue);
+void isrTimerACh0();
+
+/**
+ * @brief Interrupt Service Routine WatchDog Timer
+ */
+void isrWDT();
+
+/**
+ * @brief Interrupt Service Routine Comparator A
+ */
+void isrComparatorA();
+
+/**
+ * @brief Interrupt Service Routine NMI
+ */
+void isrNMI();
 
 #endif
