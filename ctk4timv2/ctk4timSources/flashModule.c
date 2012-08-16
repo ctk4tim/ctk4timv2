@@ -36,5 +36,21 @@ void flashErase()
  */
 void flashWrite()
 {
+	uchar *ptrSegment = 0;
 
+	// Select Clock SMCLK/3 --> 333KHz Approximately
+	FCTL2 = FWKEY | FSSEL1 | FN1 | FN0;
+
+	// Clear LOCK Bit
+	FCTL3 = FWKEY;
+
+	// Enable Segment Erase
+	FCTL1 = FWKEY | ERASE;
+
+	// Write Dummy Byte Start Segment Erase
+	//ptrSegment = &0xFC10;
+	//*ptrSegment = 0x00;
+
+	// Set LOCK Bit
+	FCTL3 = FWKEY | LOCK;
 }
