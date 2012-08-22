@@ -26,6 +26,7 @@
 
 #include "coreModule.h"
 #include "ioModule.h"
+#include "delayModule.h"
 
 /**
  * @brief Init ADC Module

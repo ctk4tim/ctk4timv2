@@ -22,7 +22,6 @@
  */
 
 #include "../ctk4timIncludes/adcModule.h"
-#include "../ctk4timIncludes/delayModule.h"
 
 /**
  * @brief Init ADC Module

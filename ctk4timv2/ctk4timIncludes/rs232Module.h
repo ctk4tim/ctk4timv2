@@ -25,6 +25,7 @@
 #define RS232MODULE_H_
 
 #include "coreModule.h"
+#include "delayModule.h"
 #include "ioModule.h"
 
 /**

@@ -25,7 +25,6 @@
 #define RTCMODULE_H_
 
 #include "coreModule.h"
-#include "ioModule.h"
 
 /*
  * RTC Init

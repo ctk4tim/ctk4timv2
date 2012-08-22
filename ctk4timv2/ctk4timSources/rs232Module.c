@@ -22,7 +22,6 @@
  */
 
 #include "../ctk4timIncludes/rs232Module.h"
-#include "../ctk4timIncludes/delayModule.h"
 
 /**
  * @brief Init RS-232 Module
