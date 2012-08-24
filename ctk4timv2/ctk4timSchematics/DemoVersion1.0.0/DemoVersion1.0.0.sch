@@ -1,0 +1,267 @@
+EESchema Schematic File Version 2  date 2012-08-18T07:53:05 COT
+LIBS:power
+LIBS:device
+LIBS:transistors
+LIBS:conn
+LIBS:linear
+LIBS:regul
+LIBS:74xx
+LIBS:cmos4000
+LIBS:adc-dac
+LIBS:memory
+LIBS:xilinx
+LIBS:special
+LIBS:microcontrollers
+LIBS:dsp
+LIBS:microchip
+LIBS:analog_switches
+LIBS:motorola
+LIBS:texas
+LIBS:intel
+LIBS:audio
+LIBS:interface
+LIBS:digital-audio
+LIBS:philips
+LIBS:display
+LIBS:cypress
+LIBS:siliconi
+LIBS:opto
+LIBS:atmel
+LIBS:contrib
+LIBS:valves
+LIBS:CTK4TIM
+LIBS:CTK4TIM-cache
+EELAYER 25  0
+EELAYER END
+$Descr A4 11700 8267
+encoding utf-8
+Sheet 1 1
+Title "Demo Version 1.0.0"
+Date "18 aug 2012"
+Rev ""
+Comp "CTK4TIM"
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+Wire Wire Line
+	2100 3300 2200 3300
+Wire Wire Line
+	2100 3000 2200 3000
+Wire Wire Line
+	2100 2700 2200 2700
+Wire Wire Line
+	4100 2850 4000 2850
+Wire Wire Line
+	4100 2550 4000 2550
+Wire Wire Line
+	4600 5450 4700 5450
+Wire Wire Line
+	4600 5150 4700 5150
+Wire Wire Line
+	4000 3000 4550 3000
+Wire Wire Line
+	4550 3000 4550 2200
+Connection ~ 4500 6500
+Wire Wire Line
+	4500 6500 4700 6500
+Connection ~ 4500 4550
+Wire Wire Line
+	4700 4550 4500 4550
+Connection ~ 4400 4400
+Wire Wire Line
+	4700 4400 4400 4400
+Connection ~ 5300 3500
+Wire Wire Line
+	5550 3500 5300 3500
+Wire Wire Line
+	4000 3300 5550 3300
+Wire Wire Line
+	4000 3150 4200 3150
+Wire Wire Line
+	4700 6050 4200 6050
+Wire Wire Line
+	4700 5750 2050 5750
+Wire Wire Line
+	4700 4700 1850 4700
+Wire Wire Line
+	2200 3600 1950 3600
+Wire Wire Line
+	1950 3600 1950 5000
+Wire Wire Line
+	4300 3450 4300 6200
+Wire Wire Line
+	4300 3450 4000 3450
+Wire Wire Line
+	4100 3750 4100 5900
+Wire Wire Line
+	4100 3750 4000 3750
+Wire Wire Line
+	4000 3600 4200 3600
+Wire Wire Line
+	4200 3600 4200 6050
+Wire Wire Line
+	2050 5750 2050 3750
+Wire Wire Line
+	2050 3750 2200 3750
+Wire Wire Line
+	1850 4700 1850 3450
+Wire Wire Line
+	1850 3450 2200 3450
+Wire Wire Line
+	1950 5000 4700 5000
+Wire Wire Line
+	4100 5900 4700 5900
+Wire Wire Line
+	4300 6200 4700 6200
+Wire Wire Line
+	4700 3150 4800 3150
+Wire Wire Line
+	5200 3150 5300 3150
+Wire Wire Line
+	5300 3150 5300 3750
+Wire Wire Line
+	4400 4100 4400 6350
+Wire Wire Line
+	4400 6350 4700 6350
+Wire Wire Line
+	4700 4250 4500 4250
+Wire Wire Line
+	4500 4250 4500 6650
+Wire Wire Line
+	4700 4850 4500 4850
+Connection ~ 4500 4850
+Wire Wire Line
+	2100 2200 2100 2400
+Wire Wire Line
+	2100 2400 2200 2400
+Wire Wire Line
+	4000 2400 4300 2400
+Wire Wire Line
+	4300 2400 4300 2600
+Wire Wire Line
+	4600 5300 4700 5300
+Wire Wire Line
+	4600 5600 4700 5600
+Wire Wire Line
+	4100 2700 4000 2700
+Wire Wire Line
+	2100 2550 2200 2550
+Wire Wire Line
+	2100 2850 2200 2850
+Wire Wire Line
+	2100 3150 2200 3150
+NoConn ~ 2100 3300
+NoConn ~ 2100 3150
+NoConn ~ 2100 3000
+NoConn ~ 2100 2850
+NoConn ~ 2100 2700
+NoConn ~ 2100 2550
+NoConn ~ 4100 2850
+NoConn ~ 4100 2700
+NoConn ~ 4100 2550
+NoConn ~ 4600 5600
+NoConn ~ 4600 5450
+NoConn ~ 4600 5300
+NoConn ~ 4600 5150
+$Comp
+L +3.3V #PWR01
+U 1 1 502F8B36
+P 4550 2200
+F 0 "#PWR01" H 4550 2160 30  0001 C CNN
+F 1 "+3.3V" H 4550 2310 30  0000 C CNN
+	1    4550 2200
+	1    0    0    -1  
+$EndComp
+$Comp
+L +3.3V #PWR02
+U 1 1 502F8B2E
+P 2100 2200
+F 0 "#PWR02" H 2100 2160 30  0001 C CNN
+F 1 "+3.3V" H 2100 2310 30  0000 C CNN
+	1    2100 2200
+	1    0    0    -1  
+$EndComp
+$Comp
+L VSS #PWR03
+U 1 1 502F8B1E
+P 4300 2600
+F 0 "#PWR03" H 4300 2600 30  0001 C CNN
+F 1 "VSS" H 4300 2530 30  0000 C CNN
+	1    4300 2600
+	1    0    0    -1  
+$EndComp
+$Comp
+L VSS #PWR04
+U 1 1 502F8AE6
+P 4500 6650
+F 0 "#PWR04" H 4500 6650 30  0001 C CNN
+F 1 "VSS" H 4500 6580 30  0000 C CNN
+	1    4500 6650
+	1    0    0    -1  
+$EndComp
+$Comp
+L +5V #PWR05
+U 1 1 502F8A71
+P 4400 4100
+F 0 "#PWR05" H 4400 4190 20  0001 C CNN
+F 1 "+5V" H 4400 4190 30  0000 C CNN
+	1    4400 4100
+	1    0    0    -1  
+$EndComp
+$Comp
+L VSS #PWR06
+U 1 1 502F8A1F
+P 5300 3750
+F 0 "#PWR06" H 5300 3750 30  0001 C CNN
+F 1 "VSS" H 5300 3680 30  0000 C CNN
+	1    5300 3750
+	1    0    0    -1  
+$EndComp
+$Comp
+L SPEAKER BUZ1
+U 1 1 502F8986
+P 5850 3400
+F 0 "BUZ1" H 5750 3650 70  0000 C CNN
+F 1 "BUZZER" H 5750 3150 70  0000 C CNN
+	1    5850 3400
+	1    0    0    -1  
+$EndComp
+$Comp
+L LCD_MODULE LCD1
+U 1 1 502F8828
+P 5450 5100
+F 0 "LCD1" H 5750 6150 60  0000 C CNN
+F 1 "LCD_MODULE" H 5600 3500 60  0000 C CNN
+	1    5450 5100
+	1    0    0    -1  
+$EndComp
+$Comp
+L MSP430G2553 U1
+U 1 1 502F80D6
+P 3150 3050
+F 0 "U1" H 3150 2350 60  0000 C CNN
+F 1 "MSP430G2553" H 3100 2150 60  0000 C CNN
+	1    3150 3050
+	1    0    0    -1  
+$EndComp
+$Comp
+L LED D1
+U 1 1 502F77A0
+P 5000 3150
+F 0 "D1" H 5000 3250 50  0000 C CNN
+F 1 "LED" H 5000 3050 50  0000 C CNN
+	1    5000 3150
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R1
+U 1 1 502F76A4
+P 4450 3150
+F 0 "R1" V 4530 3150 50  0000 C CNN
+F 1 "220" V 4450 3150 50  0000 C CNN
+	1    4450 3150
+	0    -1   -1   0   
+$EndComp
+$EndSCHEMATC
