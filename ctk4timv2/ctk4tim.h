@@ -1,7 +1,7 @@
 /**
  *  @file ctk4tim.c
  *  @brief Main Program Loop
- *  @date 29/02/2012
+ *  @date 25/08/2012
  *  @version 1.0.3
  *
  *  C Toolkit For MSP430 Texas Instrument Microcontroller
